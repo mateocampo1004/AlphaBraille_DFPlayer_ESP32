@@ -11,6 +11,7 @@
 
 #define LED_1 25          // LED del botón 1
 #define LED_2 23          // LED del botón 2
+#define LED_3 22          // LED del botón 3
 #define LED_4 26          // LED del botón 4
 #define LED_5 27          // LED del botón 5
 #define LED_6 32          // LED del botón 6
@@ -25,21 +26,21 @@ struct BrailleChar {
 
 // Inicialización correcta del array de caracteres Braille (42 elementos)
 BrailleChar alphabet[] = { 
-    {{1, 0, 0, 0, 0, 0}, 'A'}, {{1, 1, 0, 0, 0, 0}, 'B'}, {{1, 0, 0, 1, 0, 0}, 'C'},
-    {{1, 0, 0, 1, 1, 0}, 'D'}, {{1, 0, 0, 0, 1, 0}, 'E'}, {{1, 1, 0, 1, 0, 0}, 'F'},
-    {{1, 1, 0, 1, 1, 0}, 'G'}, {{1, 1, 0, 0, 1, 0}, 'H'}, {{0, 1, 0, 1, 0, 0}, 'I'},
-    {{0, 1, 0, 1, 1, 0}, 'J'}, {{1, 0, 1, 0, 0, 0}, 'K'}, {{1, 1, 1, 0, 0, 0}, 'L'},
-    {{1, 0, 1, 1, 0, 0}, 'M'}, {{1, 0, 1, 1, 1, 0}, 'N'}, {{1, 0, 1, 0, 1, 0}, 'O'},
-    {{1, 1, 1, 1, 0, 0}, 'P'}, {{1, 1, 1, 1, 1, 0}, 'Q'}, {{1, 1, 1, 0, 1, 0}, 'R'},
-    {{0, 1, 1, 1, 0, 0}, 'S'}, {{0, 1, 1, 1, 1, 0}, 'T'}, {{1, 0, 1, 0, 0, 1}, 'U'},
-    {{1, 1, 1, 0, 0, 1}, 'V'}, {{0, 1, 0, 1, 1, 1}, 'W'}, {{1, 0, 1, 1, 0, 1}, 'X'},
-    {{1, 0, 1, 1, 1, 1}, 'Y'}, {{1, 0, 1, 0, 1, 1}, 'Z'}, {{1, 1, 0, 1, 1, 1}, 'Ñ'},
-    {{0, 0, 1, 0, 0, 0}, '.'}, {{0, 1, 0, 0, 0, 0}, ','}, {{0, 1, 1, 0, 0, 0}, ';'},
-    {{0, 1, 0, 0, 1, 0}, ':'}, {{0, 0, 1, 0, 0, 1}, '-'}, {{0, 1, 0, 0, 0, 1}, '¿'},
-    {{0, 1, 1, 0, 1, 0}, '¡'}, {{0, 1, 1, 0, 0, 1}, '"'}, {{1, 1, 0, 0, 0, 1}, '('},
-    {{0, 0, 1, 1, 1, 0}, ')'}, {{1, 0, 1, 0, 1, 1}, 'á'}, {{1, 1, 1, 0, 1, 1}, 'é'},
-    {{0, 1, 1, 1, 0, 1}, 'í'}, {{0, 0, 1, 1, 0, 0}, 'ó'}, {{0, 0, 1, 1, 0, 1}, 'ú'},
-    {{0, 1, 1, 1, 1, 1}, 'ü'}
+    {{0, 0, 0, 1, 0, 0}, 'A'}, {{0, 0, 0, 1, 1, 0}, 'B'}, {{1, 0, 0, 1, 0, 0}, 'C'},
+    {{1, 1, 0, 1, 0, 0}, 'D'}, {{0, 1, 0, 1, 0, 0}, 'E'}, {{1, 0, 0, 1, 1, 0}, 'F'},
+    {{1, 1, 0, 1, 1, 0}, 'G'}, {{0, 1, 0, 1, 1, 0}, 'H'}, {{1, 0, 0, 0, 1, 0}, 'I'},
+    {{1, 1, 0, 0, 1, 0}, 'J'}, {{0, 0, 0, 1, 0, 1}, 'K'}, {{0, 0, 0, 1, 1, 1}, 'L'},
+    {{1, 0, 0, 1, 0, 1}, 'M'}, {{1, 1, 0, 1, 0, 1}, 'N'}, {{0, 1, 0, 1, 0, 1}, 'O'},
+    {{1, 0, 0, 1, 1, 1}, 'P'}, {{1, 1, 0, 1, 1, 1}, 'Q'}, {{0, 1, 0, 1, 1, 1}, 'R'},
+    {{1, 0, 0, 0, 1, 1}, 'S'}, {{1, 1, 0, 0, 1, 1}, 'T'}, {{0, 0, 1, 1, 0, 1}, 'U'},
+    {{0, 0, 1, 1, 1, 1}, 'V'}, {{1, 1, 1, 0, 1, 0}, 'W'}, {{1, 0, 1, 1, 0, 1}, 'X'},
+    {{1, 1, 1, 1, 0, 1}, 'Y'}, {{0, 1, 1, 1, 0, 1}, 'Z'}, {{1, 1, 1, 1, 1, 0}, 'Ñ'},
+    {{0, 0, 0, 0, 0, 1}, '.'}, {{0, 0, 0, 0, 1, 0}, ','}, {{0, 0, 0, 0, 1, 1}, ';'},
+    {{0, 1, 0, 0, 1, 0}, ':'}, {{0, 0, 1, 0, 0, 1}, '-'}, {{0, 0, 1, 0, 1, 0}, '¿'},
+    {{0, 1, 0, 0, 1, 1}, '¡'}, {{0, 0, 1, 0, 1, 1}, '"'}, {{0, 0, 1, 1, 1, 0}, '('},
+    {{1, 1, 0, 0, 0, 1}, ')'}, {{0, 1, 1, 1, 1, 1}, 'á'}, {{1, 0, 1, 0, 1, 1}, 'é'},
+    {{1, 0, 0, 0, 0, 1}, 'í'}, {{1, 0, 1, 0, 0, 1}, 'ó'}, {{1, 1, 1, 0, 1, 1}, 'ú'},
+    {{0, 1, 1, 1, 1, 0}, 'ü'}
 };
 
 int input[BRAILLE_BTNS] = {0, 0, 0, 0, 0, 0};
@@ -58,12 +59,14 @@ void setup() {
 
     pinMode(LED_1, OUTPUT);
     pinMode(LED_2, OUTPUT);
+    pinMode(LED_3, OUTPUT); // LED del botón 3
     pinMode(LED_4, OUTPUT);
     pinMode(LED_5, OUTPUT);
     pinMode(LED_6, OUTPUT);
 
     digitalWrite(LED_1, LOW);
     digitalWrite(LED_2, LOW);
+    digitalWrite(LED_3, LOW);
     digitalWrite(LED_4, LOW);
     digitalWrite(LED_5, LOW);
     digitalWrite(LED_6, LOW);
@@ -76,13 +79,9 @@ void setup() {
 }
 
 void loop() {
-    // Leer el estado de los botones
     readInput();
-    
-    // Mostrar el estado de los botones y controlar los LEDs
     controlLEDs();
-    
-    // Si el botón CHECK está presionado, procesar la entrada y reproducir el carácter correspondiente
+
     if (digitalRead(CHECK) == LOW) {
         delay(500);
         findAndPlayCharacter();
@@ -90,7 +89,7 @@ void loop() {
 }
 
 void readInput() {
-    input[0] = !digitalRead(BUTTON_1); // Leer si el botón está presionado (LOW significa presionado)
+    input[0] = !digitalRead(BUTTON_1);
     input[1] = !digitalRead(BUTTON_2);
     input[2] = !digitalRead(BUTTON_3);
     input[3] = !digitalRead(BUTTON_4);
@@ -99,21 +98,21 @@ void readInput() {
 }
 
 void controlLEDs() {
-    // Mostrar el estado de cada botón y encender/apagar LEDs
     digitalWrite(LED_1, input[0]);
     digitalWrite(LED_2, input[1]);
-    digitalWrite(LED_4, input[2]);
-    digitalWrite(LED_5, input[3]);
-    digitalWrite(LED_6, input[4]);
+    digitalWrite(LED_3, input[2]); // Control del LED asociado al botón 3
+    digitalWrite(LED_4, input[3]);
+    digitalWrite(LED_5, input[4]);
+    digitalWrite(LED_6, input[5]);
 }
 
 void findAndPlayCharacter() {
-    for (int i = 0; i < 42; i++) {
+    for (int i = 0; i < 43; i++) {
         if (inputMatches(i)) {
             Serial.print("Character detected: ");
             Serial.println(alphabet[i].character);
-            myDFPlayer.play(i+1); // Reproducir sonido (puedes agregar lógica para sonidos específicos)
-            delay(1000); // Delay entre reproducciones
+            myDFPlayer.play(i+1);
+            delay(1000);
             break;
         }
     }
